@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v6
+
+      - name: Compile
+        run: gcc -Wall -Wextra -o hello hello.c
+
+      - name: Run tests
+        run: ./hello
